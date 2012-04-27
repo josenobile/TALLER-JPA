@@ -67,6 +67,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableResultados = new javax.swing.JTable();
         jButtonEliminar = new javax.swing.JButton();
+        jButtonExportar = new javax.swing.JButton();
         jPanelEditar = new javax.swing.JPanel();
         jLabelRegistar2 = new javax.swing.JLabel();
         jLId1 = new javax.swing.JLabel();
@@ -85,28 +86,28 @@ public class JPanelLibros extends javax.swing.JPanel {
 
         jPanelRegistar.setLayout(null);
 
-        jLabelRegistar.setFont(new java.awt.Font("Ubuntu", 1, 24));
+        jLabelRegistar.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jLabelRegistar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRegistar.setText("Registar Libro");
         jPanelRegistar.add(jLabelRegistar);
         jLabelRegistar.setBounds(0, 10, 600, 40);
 
-        jLId.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLId.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLId.setText("id");
         jPanelRegistar.add(jLId);
         jLId.setBounds(50, 70, 200, 30);
 
-        jLTitulo.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLTitulo.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLTitulo.setText("Titulo");
         jPanelRegistar.add(jLTitulo);
         jLTitulo.setBounds(50, 110, 200, 30);
 
-        jLSubtitulo.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLSubtitulo.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLSubtitulo.setText("Subtitulo");
         jPanelRegistar.add(jLSubtitulo);
         jLSubtitulo.setBounds(50, 150, 200, 30);
 
-        jLAutores.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLAutores.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLAutores.setText("Autores:");
         jPanelRegistar.add(jLAutores);
         jLAutores.setBounds(50, 190, 200, 30);
@@ -117,7 +118,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         jPanelRegistar.add(jTFSubTitulo);
         jTFSubTitulo.setBounds(260, 150, 250, 30);
 
-        jButtonLimpiarR.setFont(new java.awt.Font("Ubuntu", 1, 18));
+        jButtonLimpiarR.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonLimpiarR.setText("LIMPIAR");
         jButtonLimpiarR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +128,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         jPanelRegistar.add(jButtonLimpiarR);
         jButtonLimpiarR.setBounds(290, 400, 100, 35);
 
-        jButtonRegistar.setFont(new java.awt.Font("Ubuntu", 1, 18));
+        jButtonRegistar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonRegistar.setText("REGISTAR");
         jButtonRegistar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,20 +149,20 @@ public class JPanelLibros extends javax.swing.JPanel {
 
         jPanelConsulta.setLayout(null);
 
-        jLabelRegistar1.setFont(new java.awt.Font("Ubuntu", 1, 24));
+        jLabelRegistar1.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jLabelRegistar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRegistar1.setText("Consulta Libro");
         jPanelConsulta.add(jLabelRegistar1);
         jLabelRegistar1.setBounds(0, 5, 600, 40);
 
-        jLCodigo1.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLCodigo1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLCodigo1.setText("Codigo");
         jPanelConsulta.add(jLCodigo1);
         jLCodigo1.setBounds(70, 60, 100, 35);
         jPanelConsulta.add(jTFCodigo1);
         jTFCodigo1.setBounds(170, 60, 230, 35);
 
-        jButtonLimpiarC.setFont(new java.awt.Font("Ubuntu", 1, 18));
+        jButtonLimpiarC.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonLimpiarC.setText("LIMPIAR");
         jButtonLimpiarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,9 +170,9 @@ public class JPanelLibros extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonLimpiarC);
-        jButtonLimpiarC.setBounds(430, 60, 140, 35);
+        jButtonLimpiarC.setBounds(440, 40, 140, 35);
 
-        jButtonConsultar.setFont(new java.awt.Font("Ubuntu", 1, 18));
+        jButtonConsultar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonConsultar.setText("CONSULTAR");
         jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +206,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         jPanelConsulta.add(jScrollPane1);
         jScrollPane1.setBounds(10, 180, 580, 270);
 
-        jButtonEliminar.setFont(new java.awt.Font("Ubuntu", 1, 18));
+        jButtonEliminar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonEliminar.setText("ELIMINAR");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,32 +216,42 @@ public class JPanelLibros extends javax.swing.JPanel {
         jPanelConsulta.add(jButtonEliminar);
         jButtonEliminar.setBounds(390, 130, 140, 35);
 
+        jButtonExportar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonExportar.setText("EXPORTAR");
+        jButtonExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportarActionPerformed(evt);
+            }
+        });
+        jPanelConsulta.add(jButtonExportar);
+        jButtonExportar.setBounds(440, 80, 140, 35);
+
         jTabbedPane1.addTab("Consultar", jPanelConsulta);
 
         jPanelEditar.setLayout(null);
 
-        jLabelRegistar2.setFont(new java.awt.Font("Ubuntu", 1, 24));
+        jLabelRegistar2.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jLabelRegistar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRegistar2.setText("Editar Libro");
         jPanelEditar.add(jLabelRegistar2);
         jLabelRegistar2.setBounds(0, 10, 600, 40);
 
-        jLId1.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLId1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLId1.setText("id");
         jPanelEditar.add(jLId1);
         jLId1.setBounds(50, 70, 200, 30);
 
-        jLTitulo1.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLTitulo1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLTitulo1.setText("Titulo");
         jPanelEditar.add(jLTitulo1);
         jLTitulo1.setBounds(50, 110, 200, 30);
 
-        jLSubtitulo1.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLSubtitulo1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLSubtitulo1.setText("Subtitulo");
         jPanelEditar.add(jLSubtitulo1);
         jLSubtitulo1.setBounds(50, 150, 200, 30);
 
-        jLAutores1.setFont(new java.awt.Font("Ubuntu", 1, 17));
+        jLAutores1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
         jLAutores1.setText("Autores:");
         jPanelEditar.add(jLAutores1);
         jLAutores1.setBounds(50, 190, 200, 30);
@@ -254,7 +265,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         jPanelEditar.add(jTFSubTitulo1);
         jTFSubTitulo1.setBounds(260, 150, 250, 30);
 
-        jButtonLimpiarR1.setFont(new java.awt.Font("Ubuntu", 1, 18));
+        jButtonLimpiarR1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonLimpiarR1.setText("LIMPIAR");
         jButtonLimpiarR1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,6 +435,12 @@ public class JPanelLibros extends javax.swing.JPanel {
         limpiarCamposEdicion();
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
+    private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
+        
+        new CreateReportFromJTable(jTableResultados, "Consulta Libros");
+        
+    }//GEN-LAST:event_jButtonExportarActionPerformed
+
     private void limpiarCamposRegistro() {
         //<editor-fold defaultstate="collapsed" desc="limpiarCamposRegistro()">
         jTFId.setText("");
@@ -458,6 +475,7 @@ public class JPanelLibros extends javax.swing.JPanel {
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonExportar;
     private javax.swing.JButton jButtonLimpiarC;
     private javax.swing.JButton jButtonLimpiarR;
     private javax.swing.JButton jButtonLimpiarR1;
