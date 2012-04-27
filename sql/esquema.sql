@@ -77,7 +77,7 @@ INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2010', 'Graficos por co
 INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2011', 'Bioestadistica', 'ninguno');
 INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2012', 'Noticia de un secuestro', 'ninguno');
 INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2013', 'La vuelta el mundo en 80 dias', 'ninguno');
-INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2014', 'el niño y el mar', 'ninguno');
+INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2014', 'el niÃ±o y el mar', 'ninguno');
 INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2015', 'fisica I', 'ninguno');
 INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2016', 'fisica universitaria', 'ninguno');
 INSERT INTO libro (id_libro, titulo, subtitulo) VALUES ('2017', 'calculo I', 'ninguno');
