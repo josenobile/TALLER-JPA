@@ -24,7 +24,7 @@ import net.sf.dynamicreports.report.constant.PageType;
 import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.view.JasperViewer;
 
-public class CreateReportFromJTable {
+public class ReportFromJTable {
 
     JasperReportBuilder jrb;
     JasperViewer jv;
@@ -34,7 +34,7 @@ public class CreateReportFromJTable {
     protected static final StyleBuilder boldCenteredStyle = stl.style(boldStyle).setHorizontalAlignment(HorizontalAlignment.CENTER);
     protected static final StyleBuilder columnTitleStyle = stl.style(boldCenteredStyle).setBorder(stl.pen1Point()).setBackgroundColor(Color.LIGHT_GRAY);
 
-    public CreateReportFromJTable(JTable tableA, String title) {
+    public ReportFromJTable(JTable tableA, String title) {
         this.title = title;
         this.table = tableA;
         build();
@@ -95,7 +95,7 @@ public class CreateReportFromJTable {
              */
             jv.setVisible(true);
         } catch (DRException ex) {
-            Logger.getLogger(CreateReportFromJTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReportFromJTable.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

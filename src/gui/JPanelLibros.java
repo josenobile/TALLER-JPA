@@ -437,7 +437,7 @@ public class JPanelLibros extends javax.swing.JPanel {
 
     private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
         
-        new CreateReportFromJTable(jTableResultados, "Consulta Libros");
+        new ReportFromJTable(jTableResultados, "Consulta Libros");
         
     }//GEN-LAST:event_jButtonExportarActionPerformed
 

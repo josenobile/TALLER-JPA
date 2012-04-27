@@ -82,6 +82,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableResultados = new javax.swing.JTable();
         jButtonEliminar = new javax.swing.JButton();
+        jButtonExportar = new javax.swing.JButton();
         jPanelEditar = new javax.swing.JPanel();
         jLabelRegistar2 = new javax.swing.JLabel();
         jLIdentificacion1 = new javax.swing.JLabel();
@@ -211,7 +212,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonLimpiarC);
-        jButtonLimpiarC.setBounds(430, 60, 140, 35);
+        jButtonLimpiarC.setBounds(430, 40, 140, 35);
 
         jButtonConsultar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonConsultar.setText("CONSULTAR");
@@ -256,6 +257,16 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         });
         jPanelConsulta.add(jButtonEliminar);
         jButtonEliminar.setBounds(390, 130, 140, 35);
+
+        jButtonExportar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonExportar.setText("EXPORTAR");
+        jButtonExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportarActionPerformed(evt);
+            }
+        });
+        jPanelConsulta.add(jButtonExportar);
+        jButtonExportar.setBounds(430, 80, 140, 35);
 
         jTabbedPane1.addTab("Consultar", jPanelConsulta);
 
@@ -500,6 +511,10 @@ public class JPanelPrestamos extends javax.swing.JPanel {
                 new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadUsuarios()));
     }//GEN-LAST:event_jCBid_usuarioPopupMenuWillBecomeVisible
 
+    private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
+        new ReportFromJTable(jTableResultados, "Consulta Prestamos");
+    }//GEN-LAST:event_jButtonExportarActionPerformed
+
     private void limpiarCamposRegistro() {
         //<editor-fold defaultstate="collapsed" desc="limpiarCamposRegistro()">
         jTFId_prestamo.setText("P-");
@@ -539,6 +554,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonExportar;
     private javax.swing.JButton jButtonLimpiarC;
     private javax.swing.JButton jButtonLimpiarE;
     private javax.swing.JButton jButtonLimpiarR;

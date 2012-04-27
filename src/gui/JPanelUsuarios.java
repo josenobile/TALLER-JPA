@@ -94,6 +94,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         jLCodigo2 = new javax.swing.JLabel();
         jLCodigo4 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jButtonExportar = new javax.swing.JButton();
         jPanelEditar = new javax.swing.JPanel();
         jLabelRegistar2 = new javax.swing.JLabel();
         jLIdentificacion1 = new javax.swing.JLabel();
@@ -226,7 +227,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonLimpiarC);
-        jButtonLimpiarC.setBounds(440, 15, 140, 35);
+        jButtonLimpiarC.setBounds(440, 40, 140, 35);
 
         jButtonConsultar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonConsultar.setText("CONSULTAR");
@@ -236,7 +237,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonConsultar);
-        jButtonConsultar.setBounds(440, 95, 140, 35);
+        jButtonConsultar.setBounds(30, 180, 140, 35);
 
         jButtonEditar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonEditar.setText("EDITAR");
@@ -246,7 +247,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonEditar);
-        jButtonEditar.setBounds(440, 55, 140, 35);
+        jButtonEditar.setBounds(180, 180, 140, 35);
 
         jTableResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,7 +261,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTableResultados);
 
         jPanelConsulta.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 180, 580, 270);
+        jScrollPane1.setBounds(10, 220, 580, 230);
 
         jButtonEliminar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonEliminar.setText("ELIMINAR");
@@ -270,7 +271,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonEliminar);
-        jButtonEliminar.setBounds(440, 135, 140, 35);
+        jButtonEliminar.setBounds(330, 180, 140, 35);
 
         jLCodigo2.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jLCodigo2.setText("Inicio");
@@ -291,6 +292,16 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         });
         jPanelConsulta.add(jCheckBox1);
         jCheckBox1.setBounds(20, 90, 410, 40);
+
+        jButtonExportar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonExportar.setText("EXPORTAR");
+        jButtonExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportarActionPerformed(evt);
+            }
+        });
+        jPanelConsulta.add(jButtonExportar);
+        jButtonExportar.setBounds(440, 80, 140, 35);
 
         jTabbedPane1.addTab("Consultar", jPanelConsulta);
 
@@ -550,6 +561,11 @@ public class JPanelUsuarios extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jCheckBox1ItemStateChanged
 
+    private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
+       
+        new ReportFromJTable(jTableResultados, "Consulta Usuarios");
+    }//GEN-LAST:event_jButtonExportarActionPerformed
+
     private void limpiarCamposRegistro() {
         //<editor-fold defaultstate="collapsed" desc="limpiarCamposRegistro()">
         jTFIdentificacion.setText("");
@@ -592,6 +608,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonExportar;
     private javax.swing.JButton jButtonLimpiarC;
     private javax.swing.JButton jButtonLimpiarE;
     private javax.swing.JButton jButtonLimpiarR;
