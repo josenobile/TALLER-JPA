@@ -25,6 +25,7 @@ import com.toedter.calendar.JDateChooser;
 import controlador.ControladorPrestamo;
 import dao.exceptions.NonexistentEntityException;
 import dao.exceptions.PreexistingEntityException;
+import java.text.DateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
@@ -37,7 +38,9 @@ public class JPanelPrestamos extends javax.swing.JPanel {
     JDateChooser dateChooserPrestamo;
     JDateChooser dateChooserDevolucion;
     Date date;
- 
+    private final JDateChooser dateChooserPrestamo1;
+    private final JDateChooser dateChooserDevolucion1;
+
     public JPanelPrestamos() {
         controladorPrestamo = new ControladorPrestamo();
         initComponents();
@@ -53,6 +56,15 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         dateChooserDevolucion.setBounds(230, 230, 330, 30);
         jPanelRegistar.add(dateChooserDevolucion);
 
+        dateChooserPrestamo1 = new JDateChooser();
+        dateChooserPrestamo1.setDate(date);
+        dateChooserPrestamo1.setBounds(230, 190, 330, 30);
+        jPanelEditar.add(dateChooserPrestamo1);
+
+        dateChooserDevolucion1 = new JDateChooser();
+        dateChooserDevolucion1.setDate(date);
+        dateChooserDevolucion1.setBounds(230, 230, 330, 30);
+        jPanelEditar.add(dateChooserDevolucion1);
     }
 
     @SuppressWarnings("unchecked")
@@ -84,25 +96,17 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         jButtonEliminar = new javax.swing.JButton();
         jButtonExportar = new javax.swing.JButton();
         jPanelEditar = new javax.swing.JPanel();
-        jLabelRegistar2 = new javax.swing.JLabel();
-        jLIdentificacion1 = new javax.swing.JLabel();
-        jLTipoDoc1 = new javax.swing.JLabel();
-        jLNumDocumento1 = new javax.swing.JLabel();
-        jLPrograma3 = new javax.swing.JLabel();
-        jLEmail1 = new javax.swing.JLabel();
-        jLDireccion1 = new javax.swing.JLabel();
-        jLTelefono1 = new javax.swing.JLabel();
-        jLCelular1 = new javax.swing.JLabel();
-        jTFIdentificacion1 = new javax.swing.JTextField();
-        jTFTipoDoc1 = new javax.swing.JTextField();
-        jTFNumDoc1 = new javax.swing.JTextField();
-        jTFNombre1 = new javax.swing.JTextField();
-        jTFEmail1 = new javax.swing.JTextField();
-        jTFDireccion1 = new javax.swing.JTextField();
-        jTFTelefono1 = new javax.swing.JTextField();
-        jTFCelular1 = new javax.swing.JTextField();
-        jButtonLimpiarE = new javax.swing.JButton();
-        jButtonActualizar = new javax.swing.JButton();
+        jLabelRegistar3 = new javax.swing.JLabel();
+        jLIdentificacion2 = new javax.swing.JLabel();
+        jLTipoDoc2 = new javax.swing.JLabel();
+        jLNumDocumento2 = new javax.swing.JLabel();
+        jLPrograma4 = new javax.swing.JLabel();
+        jLEmail2 = new javax.swing.JLabel();
+        jTFId_prestamo1 = new javax.swing.JTextField();
+        jButtonLimpiarR1 = new javax.swing.JButton();
+        jButtonRegistar1 = new javax.swing.JButton();
+        jCBid_libro1 = new javax.swing.JComboBox();
+        jCBid_usuario1 = new javax.swing.JComboBox();
 
         setLayout(null);
 
@@ -272,90 +276,84 @@ public class JPanelPrestamos extends javax.swing.JPanel {
 
         jPanelEditar.setLayout(null);
 
-        jLabelRegistar2.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
-        jLabelRegistar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRegistar2.setText("Editar Usuario");
-        jPanelEditar.add(jLabelRegistar2);
-        jLabelRegistar2.setBounds(0, 10, 600, 40);
+        jLabelRegistar3.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        jLabelRegistar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelRegistar3.setText("Editar Prestamo");
+        jPanelEditar.add(jLabelRegistar3);
+        jLabelRegistar3.setBounds(0, 10, 600, 40);
 
-        jLIdentificacion1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLIdentificacion1.setText("Identificacion");
-        jPanelEditar.add(jLIdentificacion1);
-        jLIdentificacion1.setBounds(50, 70, 200, 30);
+        jLIdentificacion2.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jLIdentificacion2.setText("Identificacion");
+        jPanelEditar.add(jLIdentificacion2);
+        jLIdentificacion2.setBounds(50, 70, 200, 30);
 
-        jLTipoDoc1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLTipoDoc1.setText("Tipo de Documento");
-        jPanelEditar.add(jLTipoDoc1);
-        jLTipoDoc1.setBounds(50, 110, 200, 30);
+        jLTipoDoc2.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jLTipoDoc2.setText("Id Libro");
+        jPanelEditar.add(jLTipoDoc2);
+        jLTipoDoc2.setBounds(50, 110, 200, 30);
 
-        jLNumDocumento1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLNumDocumento1.setText("Numero Documento");
-        jPanelEditar.add(jLNumDocumento1);
-        jLNumDocumento1.setBounds(50, 150, 200, 30);
+        jLNumDocumento2.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jLNumDocumento2.setText("Id Usuario");
+        jPanelEditar.add(jLNumDocumento2);
+        jLNumDocumento2.setBounds(50, 150, 200, 30);
 
-        jLPrograma3.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLPrograma3.setText("Nombre");
-        jPanelEditar.add(jLPrograma3);
-        jLPrograma3.setBounds(50, 190, 200, 30);
+        jLPrograma4.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jLPrograma4.setText("Fecha Prestamo");
+        jPanelEditar.add(jLPrograma4);
+        jLPrograma4.setBounds(50, 190, 200, 30);
 
-        jLEmail1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLEmail1.setText("Email");
-        jPanelEditar.add(jLEmail1);
-        jLEmail1.setBounds(50, 230, 200, 30);
+        jLEmail2.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jLEmail2.setText("Fecha Devolucion");
+        jPanelEditar.add(jLEmail2);
+        jLEmail2.setBounds(50, 230, 200, 30);
 
-        jLDireccion1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLDireccion1.setText("Direccion");
-        jPanelEditar.add(jLDireccion1);
-        jLDireccion1.setBounds(50, 270, 200, 30);
+        jTFId_prestamo1.setText("P-");
+        jPanelEditar.add(jTFId_prestamo1);
+        jTFId_prestamo1.setBounds(230, 70, 330, 30);
 
-        jLTelefono1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLTelefono1.setText("Telefono");
-        jPanelEditar.add(jLTelefono1);
-        jLTelefono1.setBounds(50, 310, 200, 30);
-
-        jLCelular1.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
-        jLCelular1.setText("Celular");
-        jPanelEditar.add(jLCelular1);
-        jLCelular1.setBounds(50, 350, 200, 30);
-
-        jTFIdentificacion1.setEditable(false);
-        jTFIdentificacion1.setEnabled(false);
-        jPanelEditar.add(jTFIdentificacion1);
-        jTFIdentificacion1.setBounds(260, 70, 250, 30);
-        jPanelEditar.add(jTFTipoDoc1);
-        jTFTipoDoc1.setBounds(260, 110, 250, 30);
-        jPanelEditar.add(jTFNumDoc1);
-        jTFNumDoc1.setBounds(260, 150, 250, 30);
-        jPanelEditar.add(jTFNombre1);
-        jTFNombre1.setBounds(260, 190, 250, 30);
-        jPanelEditar.add(jTFEmail1);
-        jTFEmail1.setBounds(260, 230, 250, 30);
-        jPanelEditar.add(jTFDireccion1);
-        jTFDireccion1.setBounds(260, 270, 250, 30);
-        jPanelEditar.add(jTFTelefono1);
-        jTFTelefono1.setBounds(260, 310, 250, 30);
-        jPanelEditar.add(jTFCelular1);
-        jTFCelular1.setBounds(260, 350, 250, 30);
-
-        jButtonLimpiarE.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jButtonLimpiarE.setText("LIMPIAR");
-        jButtonLimpiarE.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpiarR1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonLimpiarR1.setText("LIMPIAR");
+        jButtonLimpiarR1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimpiarEActionPerformed(evt);
+                jButtonLimpiarR1ActionPerformed(evt);
             }
         });
-        jPanelEditar.add(jButtonLimpiarE);
-        jButtonLimpiarE.setBounds(310, 400, 100, 35);
+        jPanelEditar.add(jButtonLimpiarR1);
+        jButtonLimpiarR1.setBounds(310, 300, 120, 35);
 
-        jButtonActualizar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jButtonActualizar.setText("ACTUALIZAR");
-        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistar1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonRegistar1.setText("ACTUALIZAR");
+        jButtonRegistar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualizarActionPerformed(evt);
+                jButtonRegistar1ActionPerformed(evt);
             }
         });
-        jPanelEditar.add(jButtonActualizar);
-        jButtonActualizar.setBounds(170, 400, 130, 35);
+        jPanelEditar.add(jButtonRegistar1);
+        jButtonRegistar1.setBounds(160, 300, 130, 35);
+
+        jCBid_libro1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBid_libro1PopupMenuWillBecomeVisible(evt);
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jPanelEditar.add(jCBid_libro1);
+        jCBid_libro1.setBounds(230, 110, 330, 30);
+
+        jCBid_usuario1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jCBid_usuario1PopupMenuWillBecomeVisible(evt);
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jPanelEditar.add(jCBid_usuario1);
+        jCBid_usuario1.setBounds(230, 150, 330, 30);
 
         jTabbedPane1.addTab("Editar", jPanelEditar);
 
@@ -366,23 +364,33 @@ public class JPanelPrestamos extends javax.swing.JPanel {
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         //<editor-fold defaultstate="collapsed" desc="jButtonEditarActionPerformed()">         
-//        if (jTableResultados.getSelectedRow() >= 0) {
-//            String idUsuario = jTableResultados.getValueAt(jTableResultados.getSelectedRow(), 0).toString();
-//            String usuario[] = controladorPrestamo.seleccionarUsuario(idUsuario);
-//
-//            jTFIdentificacion1.setText(usuario[0]);
-//            jTFTipoDoc1.setText(usuario[1]);
-//            jTFNumDoc1.setText(usuario[2]);
-//            jTFNombre1.setText(usuario[3]);
-//            jTFEmail1.setText(usuario[4]);
-//            jTFDireccion1.setText(usuario[5]);
-//            jTFTelefono1.setText(usuario[6]);
-//            jTFCelular1.setText(usuario[7]);
-//
-//            jTabbedPane1.setSelectedIndex(2);
-//        } else {
-//            JOptionPane.showMessageDialog(this, "No ha seleccionado ningun usuario para editar");
-//        }
+        if (jTableResultados.getSelectedRow() >= 0) {
+            String idPrestamo = jTableResultados.getValueAt(jTableResultados.getSelectedRow(), 0).toString();
+            String prestamo[] = controladorPrestamo.seleccionarPrestamo(idPrestamo);
+
+            jTFId_prestamo.setText(prestamo[0]);
+
+            jCBid_libro1.setModel(new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadLibros()));
+            jCBid_libro1.setSelectedItem(prestamo[1]);
+
+            jCBid_usuario1.setModel(new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadUsuarios()));
+            jCBid_usuario1.setSelectedItem(prestamo[2]);
+
+            System.out.println(prestamo[3]);
+            dateChooserPrestamo1.setDate(new Date(
+                    Integer.parseInt(prestamo[3].split(" ")[0]),
+                    Integer.parseInt(prestamo[3].split(" ")[1]),
+                    Integer.parseInt(prestamo[3].split(" ")[2])));
+            
+            dateChooserDevolucion1.setDate(new Date(
+                    Integer.parseInt(prestamo[4].split(" ")[0]),
+                    Integer.parseInt(prestamo[4].split(" ")[1]),
+                    Integer.parseInt(prestamo[4].split(" ")[2])));
+
+            jTabbedPane1.setSelectedIndex(2);
+        } else {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningun usuario para editar");
+        }
         //</editor-fold>
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
@@ -394,7 +402,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         } catch (NullPointerException e) {
             busqueda = "";
         }
-        
+
         Object prestamos[][] = controladorPrestamo.consultarPrestamo(busqueda);
         TableModel myModel = new javax.swing.table.DefaultTableModel(
                 prestamos,
@@ -427,47 +435,17 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         limpiarCamposConsulta();
     }//GEN-LAST:event_jButtonLimpiarCActionPerformed
 
-    private void jButtonLimpiarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarEActionPerformed
-        limpiarCamposEdicion();
-    }//GEN-LAST:event_jButtonLimpiarEActionPerformed
-
-    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
-        //<editor-fold defaultstate="collapsed" desc="jButtonActualizarActionPerformed()">
-//        String registro;
-//        registro = controladorPrestamo.editarUsuario(
-//                jTFTipoDoc1.getText(),
-//                jTFNumDoc1.getText(),
-//                jTFNombre1.getText(),
-//                jTFEmail1.getText(),
-//                jTFDireccion1.getText(),
-//                jTFTelefono1.getText(),
-//                jTFCelular1.getText());
-//        if (registro.equals("OK")) {
-//            JOptionPane.showMessageDialog(this, "Usuario actualizado exitosamente");
-//            limpiarCamposRegistro();
-//        } else {
-//            JOptionPane.showMessageDialog(this, registro);
-//        }
-//        jTabbedPane1.setSelectedIndex(1);
-//        limpiarCamposConsulta();
-//        jTFCodigo1.setText(jTFIdentificacion1.getText());
-//        jButtonConsultar.doClick();
-//        limpiarCamposEdicion();
-//        jTFIdentificacion1.setText("");
-        //</editor-fold>
-    }//GEN-LAST:event_jButtonActualizarActionPerformed
-
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-
+        //<editor-fold defaultstate="collapsed" desc="jButtonEliminarActionPerformed()">
         int[] selection = jTableResultados.getSelectedRows();
         if (selection.length > 0) {
-            String[] idUsuarios = new String[selection.length];
+            String[] idPrestamos = new String[selection.length];
 
-            for (int i = 0; i < idUsuarios.length; i++) {
-                idUsuarios[i] = jTableResultados.getValueAt(selection[i], 0).toString();
+            for (int i = 0; i < idPrestamos.length; i++) {
+                idPrestamos[i] = jTableResultados.getValueAt(selection[i], 0).toString();
             }
             try {
-                controladorPrestamo.eliminar(idUsuarios);
+                controladorPrestamo.eliminar(idPrestamos);
             } catch (NonexistentEntityException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
@@ -475,12 +453,11 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Ningun usuario seleccionado para eliminar");
         }
-
+        //</editor-fold>
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jButtonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarActionPerformed
         //<editor-fold defaultstate="collapsed" desc="jButtonRegistarActionPerformed()">        
-
         try {
             controladorPrestamo.guardarPrestamo(jTFId_prestamo.getText(),
                     jCBid_libro.getSelectedItem().toString().split(" - ")[0],
@@ -493,7 +470,6 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
-
         //</editor-fold>
     }//GEN-LAST:event_jButtonRegistarActionPerformed
 
@@ -515,6 +491,28 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         new ReportFromJTable(jTableResultados, "Consulta Prestamos");
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
+    private void jButtonLimpiarR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarR1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLimpiarR1ActionPerformed
+
+    private void jButtonRegistar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRegistar1ActionPerformed
+
+    private void jCBid_libro1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBid_libro1PopupMenuWillBecomeVisible
+        String seleccionado = jCBid_libro1.getSelectedItem().toString();
+        jCBid_libro1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadLibros()));
+        jCBid_libro1.setSelectedItem(seleccionado);
+    }//GEN-LAST:event_jCBid_libro1PopupMenuWillBecomeVisible
+
+    private void jCBid_usuario1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBid_usuario1PopupMenuWillBecomeVisible
+        String seleccionado = jCBid_usuario1.getSelectedItem().toString();
+        jCBid_usuario1.setModel(
+                new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadUsuarios()));
+        jCBid_usuario1.setSelectedItem(seleccionado);
+    }//GEN-LAST:event_jCBid_usuario1PopupMenuWillBecomeVisible
+
     private void limpiarCamposRegistro() {
         //<editor-fold defaultstate="collapsed" desc="limpiarCamposRegistro()">
         jTFId_prestamo.setText("P-");
@@ -527,13 +525,10 @@ public class JPanelPrestamos extends javax.swing.JPanel {
 
     private void limpiarCamposEdicion() {
         //<editor-fold defaultstate="collapsed" desc="limpiarCamposEdicion()">
-        jTFTipoDoc1.setText("");
-        jTFNumDoc1.setText("");
-        jTFNombre1.setText("");
-        jTFEmail1.setText("");
-        jTFDireccion1.setText("");
-        jTFTelefono1.setText("");
-        jTFCelular1.setText("");
+        jCBid_libro.setSelectedIndex(0);
+        jCBid_usuario.setSelectedIndex(0);
+        dateChooserDevolucion.setDate(date);
+        dateChooserPrestamo.setDate(date);
         //</editor-fold>
     }
 
@@ -550,48 +545,40 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         //</editor-fold>
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonActualizar;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonExportar;
     private javax.swing.JButton jButtonLimpiarC;
-    private javax.swing.JButton jButtonLimpiarE;
     private javax.swing.JButton jButtonLimpiarR;
+    private javax.swing.JButton jButtonLimpiarR1;
     private javax.swing.JButton jButtonRegistar;
+    private javax.swing.JButton jButtonRegistar1;
     private javax.swing.JComboBox jCBid_libro;
+    private javax.swing.JComboBox jCBid_libro1;
     private javax.swing.JComboBox jCBid_usuario;
-    private javax.swing.JLabel jLCelular1;
+    private javax.swing.JComboBox jCBid_usuario1;
     private javax.swing.JLabel jLCodigo1;
-    private javax.swing.JLabel jLDireccion1;
     private javax.swing.JLabel jLEmail;
-    private javax.swing.JLabel jLEmail1;
+    private javax.swing.JLabel jLEmail2;
     private javax.swing.JLabel jLIdentificacion;
-    private javax.swing.JLabel jLIdentificacion1;
+    private javax.swing.JLabel jLIdentificacion2;
     private javax.swing.JLabel jLNumDocumento;
-    private javax.swing.JLabel jLNumDocumento1;
+    private javax.swing.JLabel jLNumDocumento2;
     private javax.swing.JLabel jLPrograma2;
-    private javax.swing.JLabel jLPrograma3;
-    private javax.swing.JLabel jLTelefono1;
+    private javax.swing.JLabel jLPrograma4;
     private javax.swing.JLabel jLTipoDoc;
-    private javax.swing.JLabel jLTipoDoc1;
+    private javax.swing.JLabel jLTipoDoc2;
     private javax.swing.JLabel jLabelRegistar;
     private javax.swing.JLabel jLabelRegistar1;
-    private javax.swing.JLabel jLabelRegistar2;
+    private javax.swing.JLabel jLabelRegistar3;
     private javax.swing.JPanel jPanelConsulta;
     private javax.swing.JPanel jPanelEditar;
     private javax.swing.JPanel jPanelRegistar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTFCelular1;
     private javax.swing.JTextField jTFCodigo1;
-    private javax.swing.JTextField jTFDireccion1;
-    private javax.swing.JTextField jTFEmail1;
     private javax.swing.JTextField jTFId_prestamo;
-    private javax.swing.JTextField jTFIdentificacion1;
-    private javax.swing.JTextField jTFNombre1;
-    private javax.swing.JTextField jTFNumDoc1;
-    private javax.swing.JTextField jTFTelefono1;
-    private javax.swing.JTextField jTFTipoDoc1;
+    private javax.swing.JTextField jTFId_prestamo1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableResultados;
     // End of variables declaration//GEN-END:variables

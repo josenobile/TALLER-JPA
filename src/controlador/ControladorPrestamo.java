@@ -56,7 +56,7 @@ public class ControladorPrestamo {
     public void guardarPrestamo(String idPrestamo, String idLibro, String idUsuario, Date fPrestamo,
             Date fDevolucion) throws PreexistingEntityException, Exception {
 
-        System.out.println("idLibro: "+idLibro+" idUsuario: "+idUsuario);
+        System.out.println("idLibro: " + idLibro + " idUsuario: " + idUsuario);
         Prestamo prestamo = new Prestamo();
         prestamo.setIdPrestamo(idPrestamo);
         prestamo.setIdLibro(daoLibro.findLibro(idLibro));
@@ -69,7 +69,7 @@ public class ControladorPrestamo {
     }
 
     public Object[][] consultarPrestamo(String idPrestamo) {
-    
+
         Vector<Prestamo> ultimoPrestamo;
 
         if (idPrestamo.equals("")) {
@@ -81,8 +81,8 @@ public class ControladorPrestamo {
                 resultado[i][0] = ultimoPrestamo.get(i).getIdPrestamo();
                 resultado[i][1] = ultimoPrestamo.get(i).getIdLibro().getIdLibro();
                 resultado[i][2] = ultimoPrestamo.get(i).getIdUsuario().getIdUsuario();
-                resultado[i][3] = ultimoPrestamo.get(i).getFechaPrestamo().toString();
-                resultado[i][4] = ultimoPrestamo.get(i).getFechaDevolucion().toString();
+                resultado[i][3] = ultimoPrestamo.get(i).getFechaPrestamo().toGMTString();
+                resultado[i][4] = ultimoPrestamo.get(i).getFechaDevolucion().toGMTString();
             }
 
             return resultado;
@@ -96,8 +96,8 @@ public class ControladorPrestamo {
                 resultado1[i][0] = ultimoPrestamo.get(i).getIdPrestamo();
                 resultado1[i][1] = ultimoPrestamo.get(i).getIdLibro().getIdLibro();
                 resultado1[i][2] = ultimoPrestamo.get(i).getIdUsuario().getIdUsuario();
-                resultado1[i][3] = ultimoPrestamo.get(i).getFechaPrestamo().toString();
-                resultado1[i][4] = ultimoPrestamo.get(i).getFechaDevolucion().toString();
+                resultado1[i][3] = ultimoPrestamo.get(i).getFechaPrestamo().toGMTString();
+                resultado1[i][4] = ultimoPrestamo.get(i).getFechaDevolucion().toGMTString();
             }
 
             return resultado1;
@@ -111,11 +111,10 @@ public class ControladorPrestamo {
 
         prestamoSeleccionado = daoPrestamo.findPrestamo(idPrestamo);
         prestamo[0] = prestamoSeleccionado.getIdPrestamo();
-
-//      prestamo[1] = prestamoSeleccionado.getIdLibro();
-//      prestamo[2] = prestamoSeleccionado.getIdUsuario();
-//      prestamo[3] = prestamoSeleccionado.getFechaPrestamo();
-//      prestamo[4] = prestamoSeleccionado.getFechaDevolucion();
+        prestamo[1] = prestamoSeleccionado.getIdLibro().getIdLibro() + " - " + prestamoSeleccionado.getIdLibro().getTitulo();
+        prestamo[2] = prestamoSeleccionado.getIdUsuario().getIdUsuario() + " - " + prestamoSeleccionado.getIdUsuario().getNombreCompleto();
+        prestamo[3] = prestamoSeleccionado.getFechaPrestamo().toGMTString();
+        prestamo[4] = prestamoSeleccionado.getFechaDevolucion().toGMTString();
         return prestamo;
     }
 

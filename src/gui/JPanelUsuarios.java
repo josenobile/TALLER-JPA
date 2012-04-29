@@ -473,20 +473,24 @@ public class JPanelUsuarios extends javax.swing.JPanel {
 
     private void jButtonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarActionPerformed
         //<editor-fold defaultstate="collapsed" desc="jButtonRegistarActionPerformed()">        
-        String registro;
-        registro = controladorUsuario.guardarUsuario(jTFIdentificacion.getText(),
-                jTFTipoDoc.getText(),
-                jTFNumDoc.getText(),
-                jTFNombre.getText(),
-                jTFEmail.getText(),
-                jTFDireccion.getText(),
-                jTFTelefono.getText(),
-                jTFCelular.getText());
-        if (registro.equals("OK")) {
-            JOptionPane.showMessageDialog(this, "Usuario Registrado exitosamente");
-            limpiarCamposRegistro();
+        if (!jTFIdentificacion.getText().equals("")) {
+            String registro;
+            registro = controladorUsuario.guardarUsuario(jTFIdentificacion.getText(),
+                    jTFTipoDoc.getText(),
+                    jTFNumDoc.getText(),
+                    jTFNombre.getText(),
+                    jTFEmail.getText(),
+                    jTFDireccion.getText(),
+                    jTFTelefono.getText(),
+                    jTFCelular.getText());
+            if (registro.equals("OK")) {
+                JOptionPane.showMessageDialog(this, "Usuario Registrado exitosamente");
+                limpiarCamposRegistro();
+            } else {
+                JOptionPane.showMessageDialog(this, registro);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, registro);
+            JOptionPane.showMessageDialog(this, "No hay suficiente informacion para registrar un Usuario");
         }
         //</editor-fold>
     }//GEN-LAST:event_jButtonRegistarActionPerformed
@@ -526,11 +530,11 @@ public class JPanelUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-
+        //<editor-fold defaultstate="collapsed" desc="jButtonEliminarActionPerformed()">
         int[] selection = jTableResultados.getSelectedRows();
         if (selection.length > 0) {
             String[] idUsuarios = new String[selection.length];
-
+            
             for (int i = 0; i < idUsuarios.length; i++) {
                 idUsuarios[i] = jTableResultados.getValueAt(selection[i], 0).toString();
             }
@@ -543,11 +547,11 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Ningun usuario seleccionado para eliminar");
         }
-
+        //</editor-fold>
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jCheckBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox1ItemStateChanged
-
+        //<editor-fold defaultstate="collapsed" desc="jCheckBox1ItemStateChanged">
         if (jCheckBox1.isSelected()) {
             jTFCodigo1.setEnabled(false);
             dateInicial.setEnabled(true);
@@ -558,11 +562,10 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             dateInicial.setEnabled(false);
             dateFinal.setEnabled(false);
         }
-
+        //</editor-fold>
     }//GEN-LAST:event_jCheckBox1ItemStateChanged
 
     private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
-       
         new ReportFromJTable(jTableResultados, "Consulta Usuarios");
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
@@ -603,6 +606,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         jTableResultados.setRowSorter(new TableRowSorter(myModel));
         //</editor-fold>
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualizar;
     private javax.swing.JButton jButtonConsultar;
