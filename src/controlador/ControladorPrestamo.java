@@ -29,6 +29,7 @@ import dao.exceptions.PreexistingEntityException;
 import entidades.Libro;
 import entidades.Prestamo;
 import entidades.Usuario;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 import javax.persistence.EntityManager;
@@ -45,11 +46,13 @@ public class ControladorPrestamo {
     Prestamo prestamoSeleccionado;
     UsuarioJpaController daoUsuario;
     LibroJpaController daoLibro;
+    SimpleDateFormat simpleDateFormat;
 
     public ControladorPrestamo() {    // instancia de la variable entidad
         daoPrestamo = new PrestamoJpaController(factory);
         daoLibro = new LibroJpaController(factory);
         daoUsuario = new UsuarioJpaController(factory);
+        simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy' - 'hh:mm:ss aa");
 
     }
 
@@ -81,8 +84,8 @@ public class ControladorPrestamo {
                 resultado[i][0] = ultimoPrestamo.get(i).getIdPrestamo();
                 resultado[i][1] = ultimoPrestamo.get(i).getIdLibro().getIdLibro();
                 resultado[i][2] = ultimoPrestamo.get(i).getIdUsuario().getIdUsuario();
-                resultado[i][3] = ultimoPrestamo.get(i).getFechaPrestamo().toGMTString();
-                resultado[i][4] = ultimoPrestamo.get(i).getFechaDevolucion().toGMTString();
+                resultado[i][3] = simpleDateFormat.format(ultimoPrestamo.get(i).getFechaPrestamo());
+                resultado[i][4] = simpleDateFormat.format(ultimoPrestamo.get(i).getFechaDevolucion());
             }
 
             return resultado;
@@ -96,8 +99,8 @@ public class ControladorPrestamo {
                 resultado1[i][0] = ultimoPrestamo.get(i).getIdPrestamo();
                 resultado1[i][1] = ultimoPrestamo.get(i).getIdLibro().getIdLibro();
                 resultado1[i][2] = ultimoPrestamo.get(i).getIdUsuario().getIdUsuario();
-                resultado1[i][3] = ultimoPrestamo.get(i).getFechaPrestamo().toGMTString();
-                resultado1[i][4] = ultimoPrestamo.get(i).getFechaDevolucion().toGMTString();
+                resultado1[i][3] = simpleDateFormat.format(ultimoPrestamo.get(i).getFechaPrestamo());
+                resultado1[i][4] = simpleDateFormat.format(ultimoPrestamo.get(i).getFechaDevolucion());
             }
 
             return resultado1;
@@ -113,14 +116,14 @@ public class ControladorPrestamo {
         prestamo[0] = prestamoSeleccionado.getIdPrestamo();
         prestamo[1] = prestamoSeleccionado.getIdLibro().getIdLibro() + " - " + prestamoSeleccionado.getIdLibro().getTitulo();
         prestamo[2] = prestamoSeleccionado.getIdUsuario().getIdUsuario() + " - " + prestamoSeleccionado.getIdUsuario().getNombreCompleto();
-        prestamo[3] = prestamoSeleccionado.getFechaPrestamo().toGMTString();
-        prestamo[4] = prestamoSeleccionado.getFechaDevolucion().toGMTString();
+        prestamo[3] = simpleDateFormat.format(prestamoSeleccionado.getFechaPrestamo());
+        prestamo[4] = simpleDateFormat.format(prestamoSeleccionado.getFechaDevolucion());
         return prestamo;
     }
 
-    public String editarPrestamo(Libro idLibro, Usuario idUsuario, Date fPrestamo, Date fDevolucion) {
-        prestamoSeleccionado.setIdLibro(idLibro);
-        prestamoSeleccionado.setIdUsuario(idUsuario);
+    public String editarPrestamo(String idLibro, String idUsuario, Date fPrestamo, Date fDevolucion) {
+        prestamoSeleccionado.setIdLibro(daoLibro.findLibro(idLibro));
+        prestamoSeleccionado.setIdUsuario(daoUsuario.findUsuario(idUsuario));
         prestamoSeleccionado.setFechaPrestamo(fPrestamo);
         prestamoSeleccionado.setFechaDevolucion(fDevolucion);
 

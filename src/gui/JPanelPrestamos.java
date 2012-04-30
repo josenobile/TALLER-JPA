@@ -25,8 +25,11 @@ import com.toedter.calendar.JDateChooser;
 import controlador.ControladorPrestamo;
 import dao.exceptions.NonexistentEntityException;
 import dao.exceptions.PreexistingEntityException;
-import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
@@ -37,34 +40,37 @@ public class JPanelPrestamos extends javax.swing.JPanel {
     ControladorPrestamo controladorPrestamo;
     JDateChooser dateChooserPrestamo;
     JDateChooser dateChooserDevolucion;
-    Date date;
-    private final JDateChooser dateChooserPrestamo1;
-    private final JDateChooser dateChooserDevolucion1;
+    JDateChooser dateChooserPrestamo1;
+    JDateChooser dateChooserDevolucion1;
+    String dateFormatPattern;
 
     public JPanelPrestamos() {
         controladorPrestamo = new ControladorPrestamo();
         initComponents();
 
-        date = new Date();
-        dateChooserPrestamo = new JDateChooser();
-        dateChooserPrestamo.setDate(date);
+        dateFormatPattern = "dd MMMM yyyy' - 'hh:mm:ss aa";
+        dateChooserPrestamo = new JDateChooser(new Date());
+        dateChooserPrestamo.setDateFormatString(dateFormatPattern);
         dateChooserPrestamo.setBounds(230, 190, 330, 30);
         jPanelRegistar.add(dateChooserPrestamo);
 
-        dateChooserDevolucion = new JDateChooser();
-        dateChooserDevolucion.setDate(date);
+        dateChooserDevolucion = new JDateChooser(new Date());
+        dateChooserDevolucion.setDateFormatString(dateFormatPattern);
         dateChooserDevolucion.setBounds(230, 230, 330, 30);
         jPanelRegistar.add(dateChooserDevolucion);
 
-        dateChooserPrestamo1 = new JDateChooser();
-        dateChooserPrestamo1.setDate(date);
+        dateChooserPrestamo1 = new JDateChooser(new Date());
+        dateChooserPrestamo1.setDateFormatString(dateFormatPattern);
         dateChooserPrestamo1.setBounds(230, 190, 330, 30);
         jPanelEditar.add(dateChooserPrestamo1);
 
-        dateChooserDevolucion1 = new JDateChooser();
-        dateChooserDevolucion1.setDate(date);
+        dateChooserDevolucion1 = new JDateChooser(new Date());
+        dateChooserDevolucion1.setDateFormatString(dateFormatPattern);
         dateChooserDevolucion1.setBounds(230, 230, 330, 30);
         jPanelEditar.add(dateChooserDevolucion1);
+
+        jCBid_libro.setModel(new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadLibros()));
+        jCBid_usuario.setModel(new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadUsuarios()));
     }
 
     @SuppressWarnings("unchecked")
@@ -104,7 +110,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         jLEmail2 = new javax.swing.JLabel();
         jTFId_prestamo1 = new javax.swing.JTextField();
         jButtonLimpiarR1 = new javax.swing.JButton();
-        jButtonRegistar1 = new javax.swing.JButton();
+        jButtonActualizar = new javax.swing.JButton();
         jCBid_libro1 = new javax.swing.JComboBox();
         jCBid_usuario1 = new javax.swing.JComboBox();
 
@@ -155,7 +161,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
             }
         });
         jPanelRegistar.add(jButtonLimpiarR);
-        jButtonLimpiarR.setBounds(290, 400, 120, 35);
+        jButtonLimpiarR.setBounds(315, 400, 130, 35);
 
         jButtonRegistar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonRegistar.setText("REGISTAR");
@@ -165,7 +171,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
             }
         });
         jPanelRegistar.add(jButtonRegistar);
-        jButtonRegistar.setBounds(140, 400, 130, 35);
+        jButtonRegistar.setBounds(165, 400, 130, 35);
 
         jCBid_libro.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
@@ -319,17 +325,17 @@ public class JPanelPrestamos extends javax.swing.JPanel {
             }
         });
         jPanelEditar.add(jButtonLimpiarR1);
-        jButtonLimpiarR1.setBounds(310, 300, 120, 35);
+        jButtonLimpiarR1.setBounds(315, 400, 130, 35);
 
-        jButtonRegistar1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jButtonRegistar1.setText("ACTUALIZAR");
-        jButtonRegistar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonActualizar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonActualizar.setText("ACTUALIZAR");
+        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistar1ActionPerformed(evt);
+                jButtonActualizarActionPerformed(evt);
             }
         });
-        jPanelEditar.add(jButtonRegistar1);
-        jButtonRegistar1.setBounds(160, 300, 130, 35);
+        jPanelEditar.add(jButtonActualizar);
+        jButtonActualizar.setBounds(165, 400, 130, 35);
 
         jCBid_libro1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
@@ -368,24 +374,21 @@ public class JPanelPrestamos extends javax.swing.JPanel {
             String idPrestamo = jTableResultados.getValueAt(jTableResultados.getSelectedRow(), 0).toString();
             String prestamo[] = controladorPrestamo.seleccionarPrestamo(idPrestamo);
 
-            jTFId_prestamo.setText(prestamo[0]);
+            jTFId_prestamo1.setText(prestamo[0]);
 
             jCBid_libro1.setModel(new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadLibros()));
             jCBid_libro1.setSelectedItem(prestamo[1]);
 
             jCBid_usuario1.setModel(new javax.swing.DefaultComboBoxModel(controladorPrestamo.loadUsuarios()));
             jCBid_usuario1.setSelectedItem(prestamo[2]);
-
-            System.out.println(prestamo[3]);
-            dateChooserPrestamo1.setDate(new Date(
-                    Integer.parseInt(prestamo[3].split(" ")[0]),
-                    Integer.parseInt(prestamo[3].split(" ")[1]),
-                    Integer.parseInt(prestamo[3].split(" ")[2])));
             
-            dateChooserDevolucion1.setDate(new Date(
-                    Integer.parseInt(prestamo[4].split(" ")[0]),
-                    Integer.parseInt(prestamo[4].split(" ")[1]),
-                    Integer.parseInt(prestamo[4].split(" ")[2])));
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy' - 'hh:mm:ss aa");
+            try {
+                dateChooserPrestamo1.setDate(simpleDateFormat.parse(prestamo[3]));
+                dateChooserDevolucion1.setDate(simpleDateFormat.parse(prestamo[4]));
+            } catch (ParseException ex) {
+               JOptionPane.showMessageDialog(this, ex);
+            }
 
             jTabbedPane1.setSelectedIndex(2);
         } else {
@@ -421,10 +424,10 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         TableColumn column = null;
         for (int i = 0; i < 5; i++) {
             column = jTableResultados.getColumnModel().getColumn(i);
-            if (i == 1 || i == 3 || i == 4) {
+            if ( i == 3 || i == 4) {
                 column.setPreferredWidth(220);
             } else {
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }
 
         }
@@ -449,6 +452,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
             } catch (NonexistentEntityException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
+            limpiarCamposConsulta();
             jButtonConsultar.doClick();
         } else {
             JOptionPane.showMessageDialog(this, "Ningun usuario seleccionado para eliminar");
@@ -492,12 +496,30 @@ public class JPanelPrestamos extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
     private void jButtonLimpiarR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarR1ActionPerformed
-        // TODO add your handling code here:
+        limpiarCamposEdicion();
     }//GEN-LAST:event_jButtonLimpiarR1ActionPerformed
 
-    private void jButtonRegistar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonRegistar1ActionPerformed
+    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+        //<editor-fold defaultstate="collapsed" desc="jButtonActualizarActionPerformed()">
+        String registro;
+        registro = controladorPrestamo.editarPrestamo(
+                    jCBid_libro1.getSelectedItem().toString().split(" - ")[0],
+                    jCBid_usuario1.getSelectedItem().toString().split(" - ")[0],
+                    dateChooserPrestamo1.getDate(),
+                    dateChooserDevolucion1.getDate());
+        
+        if (registro.equals("OK")) {
+            JOptionPane.showMessageDialog(this, "Usuario actualizado exitosamente");
+            limpiarCamposRegistro();
+        } else {
+            JOptionPane.showMessageDialog(this, registro);
+        }
+        jTabbedPane1.setSelectedIndex(1);
+        limpiarCamposConsulta();
+        jTFCodigo1.setText(jTFId_prestamo1.getText());
+        jButtonConsultar.doClick();
+        //</editor-fold>         
+    }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jCBid_libro1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCBid_libro1PopupMenuWillBecomeVisible
         String seleccionado = jCBid_libro1.getSelectedItem().toString();
@@ -518,17 +540,17 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         jTFId_prestamo.setText("P-");
         jCBid_libro.setSelectedIndex(0);
         jCBid_usuario.setSelectedIndex(0);
-        dateChooserDevolucion.setDate(date);
-        dateChooserPrestamo.setDate(date);
+        dateChooserDevolucion.setDate(new Date());
+        dateChooserPrestamo.setDate(new Date());
         //</editor-fold>
     }
 
     private void limpiarCamposEdicion() {
         //<editor-fold defaultstate="collapsed" desc="limpiarCamposEdicion()">
-        jCBid_libro.setSelectedIndex(0);
-        jCBid_usuario.setSelectedIndex(0);
-        dateChooserDevolucion.setDate(date);
-        dateChooserPrestamo.setDate(date);
+        jCBid_libro1.setSelectedIndex(0);
+        jCBid_usuario1.setSelectedIndex(0);
+        dateChooserDevolucion1.setDate(new Date());
+        dateChooserPrestamo1.setDate(new Date());
         //</editor-fold>
     }
 
@@ -545,6 +567,7 @@ public class JPanelPrestamos extends javax.swing.JPanel {
         //</editor-fold>
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonActualizar;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
@@ -553,7 +576,6 @@ public class JPanelPrestamos extends javax.swing.JPanel {
     private javax.swing.JButton jButtonLimpiarR;
     private javax.swing.JButton jButtonLimpiarR1;
     private javax.swing.JButton jButtonRegistar;
-    private javax.swing.JButton jButtonRegistar1;
     private javax.swing.JComboBox jCBid_libro;
     private javax.swing.JComboBox jCBid_libro1;
     private javax.swing.JComboBox jCBid_usuario;

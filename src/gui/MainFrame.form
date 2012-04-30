@@ -86,9 +86,9 @@
         <Component class="javax.swing.JButton" name="jButtonEstudiantes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="15" style="1"/>
+              <Font name="Ubuntu" size="17" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Usuarios"/>
+            <Property name="text" type="java.lang.String" value="USUARIOS"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEstudiantesActionPerformed"/>
@@ -124,7 +124,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="10" width="72" height="100"/>
+              <AbsoluteConstraints x="54" y="10" width="72" height="100"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -138,9 +138,9 @@
         <Component class="javax.swing.JButton" name="jButtonLibros">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="15" style="1"/>
+              <Font name="Ubuntu" size="17" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Libros"/>
+            <Property name="text" type="java.lang.String" value="LIBROS"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLibrosActionPerformed"/>
@@ -154,9 +154,9 @@
         <Component class="javax.swing.JButton" name="jButtonPrestamos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="15" style="1"/>
+              <Font name="Ubuntu" size="17" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Prestamos"/>
+            <Property name="text" type="java.lang.String" value="PRESTAMOS"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPrestamosActionPerformed"/>

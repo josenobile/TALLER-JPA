@@ -79,8 +79,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.add(jSeparator3);
         jSeparator3.setBounds(5, 120, 170, 6);
 
-        jButtonEstudiantes.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButtonEstudiantes.setText("Usuarios");
+        jButtonEstudiantes.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jButtonEstudiantes.setText("USUARIOS");
         jButtonEstudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEstudiantesActionPerformed(evt);
@@ -97,12 +97,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/UNIVALLE.jpg"))); // NOI18N
         jPanel1.add(jLabelLogo);
-        jLabelLogo.setBounds(50, 10, 72, 100);
+        jLabelLogo.setBounds(54, 10, 72, 100);
         jPanel1.add(jSeparator4);
         jSeparator4.setBounds(5, 220, 170, 6);
 
-        jButtonLibros.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButtonLibros.setText("Libros");
+        jButtonLibros.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jButtonLibros.setText("LIBROS");
         jButtonLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLibrosActionPerformed(evt);
@@ -111,8 +111,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.add(jButtonLibros);
         jButtonLibros.setBounds(5, 180, 170, 35);
 
-        jButtonPrestamos.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButtonPrestamos.setText("Prestamos");
+        jButtonPrestamos.setFont(new java.awt.Font("Ubuntu", 1, 17)); // NOI18N
+        jButtonPrestamos.setText("PRESTAMOS");
         jButtonPrestamos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrestamosActionPerformed(evt);
@@ -165,7 +165,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMIAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAcercaDeActionPerformed
         //<editor-fold defaultstate="collapsed" desc="jMIAcercaDeActionPerformed()">
         String acercaDe = "DESARROLLO DE SOFTWARE II\n"
-                + "TALLER PATRON-DAO\n\n"
+                + "TALLER JPA\n\n"
                 + "AUTORES:\n\n"
                 + "Gustavo Adolfo Rodriguez    0932979-3743\n"
                 + "gustalibreros@hotmail.com\n\n"

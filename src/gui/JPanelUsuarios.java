@@ -33,25 +33,26 @@ import javax.swing.table.TableRowSorter;
 public class JPanelUsuarios extends javax.swing.JPanel {
 
     ControladorUsuario controladorUsuario;
-    private final Date date;
     private final JDateChooser dateInicial;
     private final JDateChooser dateFinal;
+    private final String dateFormatPattern;
 
     public JPanelUsuarios() {
         controladorUsuario = new ControladorUsuario();
         initComponents();
         jTabbedPane1.setEnabledAt(2, false);
 
-        date = new Date();
-        dateInicial = new JDateChooser();
-        dateInicial.setDate(date);
-        dateInicial.setBounds(70, 130, 150, 35);
+        dateFormatPattern = "dd MMMM yyyy' - 'hh:mm:ss aa";
+        
+        dateInicial = new JDateChooser(new Date());
+        dateInicial.setDateFormatString(dateFormatPattern);
+        dateInicial.setBounds(70, 130, 230, 35);
         jPanelConsulta.add(dateInicial);
         dateInicial.setEnabled(false);
 
-        dateFinal = new JDateChooser();
-        dateFinal.setDate(date);
-        dateFinal.setBounds(270, 130, 150, 35);
+        dateFinal = new JDateChooser(new Date());
+        dateFinal.setDateFormatString(dateFormatPattern);
+        dateFinal.setBounds(350, 130, 230, 35);
         jPanelConsulta.add(dateFinal);
         dateFinal.setEnabled(false);
     }
@@ -190,7 +191,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelRegistar.add(jButtonLimpiarR);
-        jButtonLimpiarR.setBounds(290, 400, 100, 35);
+        jButtonLimpiarR.setBounds(315, 400, 130, 35);
 
         jButtonRegistar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonRegistar.setText("REGISTAR");
@@ -200,7 +201,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelRegistar.add(jButtonRegistar);
-        jButtonRegistar.setBounds(170, 400, 100, 35);
+        jButtonRegistar.setBounds(165, 400, 130, 35);
 
         jTabbedPane1.addTab("Registar", jPanelRegistar);
 
@@ -237,7 +238,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonConsultar);
-        jButtonConsultar.setBounds(30, 180, 140, 35);
+        jButtonConsultar.setBounds(30, 175, 140, 35);
 
         jButtonEditar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonEditar.setText("EDITAR");
@@ -247,7 +248,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonEditar);
-        jButtonEditar.setBounds(180, 180, 140, 35);
+        jButtonEditar.setBounds(180, 175, 140, 35);
 
         jTableResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -271,7 +272,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelConsulta.add(jButtonEliminar);
-        jButtonEliminar.setBounds(330, 180, 140, 35);
+        jButtonEliminar.setBounds(330, 175, 140, 35);
 
         jLCodigo2.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jLCodigo2.setText("Inicio");
@@ -281,7 +282,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         jLCodigo4.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jLCodigo4.setText("Fin");
         jPanelConsulta.add(jLCodigo4);
-        jLCodigo4.setBounds(240, 130, 30, 35);
+        jLCodigo4.setBounds(320, 130, 30, 35);
 
         jCheckBox1.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jCheckBox1.setText("Usuarios que han hecho préstamos en un periodo:");
@@ -380,7 +381,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelEditar.add(jButtonLimpiarE);
-        jButtonLimpiarE.setBounds(310, 400, 100, 35);
+        jButtonLimpiarE.setBounds(315, 400, 130, 35);
 
         jButtonActualizar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonActualizar.setText("ACTUALIZAR");
@@ -390,7 +391,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             }
         });
         jPanelEditar.add(jButtonActualizar);
-        jButtonActualizar.setBounds(170, 400, 130, 35);
+        jButtonActualizar.setBounds(165, 400, 130, 35);
 
         jTabbedPane1.addTab("Editar", jPanelEditar);
 
@@ -543,6 +544,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
             } catch (NonexistentEntityException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
+            limpiarCamposConsulta();
             jButtonConsultar.doClick();
         } else {
             JOptionPane.showMessageDialog(this, "Ningun usuario seleccionado para eliminar");

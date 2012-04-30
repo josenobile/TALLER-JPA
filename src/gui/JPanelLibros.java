@@ -126,7 +126,7 @@ public class JPanelLibros extends javax.swing.JPanel {
             }
         });
         jPanelRegistar.add(jButtonLimpiarR);
-        jButtonLimpiarR.setBounds(290, 400, 100, 35);
+        jButtonLimpiarR.setBounds(315, 400, 130, 35);
 
         jButtonRegistar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonRegistar.setText("REGISTAR");
@@ -136,7 +136,7 @@ public class JPanelLibros extends javax.swing.JPanel {
             }
         });
         jPanelRegistar.add(jButtonRegistar);
-        jButtonRegistar.setBounds(170, 400, 100, 35);
+        jButtonRegistar.setBounds(165, 400, 130, 35);
 
         jTextAreaAutores.setColumns(20);
         jTextAreaAutores.setRows(5);
@@ -273,7 +273,7 @@ public class JPanelLibros extends javax.swing.JPanel {
             }
         });
         jPanelEditar.add(jButtonLimpiarR1);
-        jButtonLimpiarR1.setBounds(290, 400, 100, 35);
+        jButtonLimpiarR1.setBounds(315, 400, 130, 35);
 
         jButtonActualizar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonActualizar.setText("ACTUALIZAR");
@@ -283,7 +283,7 @@ public class JPanelLibros extends javax.swing.JPanel {
             }
         });
         jPanelEditar.add(jButtonActualizar);
-        jButtonActualizar.setBounds(140, 400, 130, 35);
+        jButtonActualizar.setBounds(165, 400, 130, 35);
 
         jTextAreaAutores1.setColumns(20);
         jTextAreaAutores1.setRows(5);
@@ -349,9 +349,9 @@ public class JPanelLibros extends javax.swing.JPanel {
         for (int i = 0; i < 3; i++) {
             column = jTableResultados.getColumnModel().getColumn(i);
             if (i == 1 || i == 2) {
-                column.setPreferredWidth(238);
+                column.setPreferredWidth(300);
             } else {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(110);
             }
 
         }
@@ -401,6 +401,7 @@ public class JPanelLibros extends javax.swing.JPanel {
             } catch (NonexistentEntityException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
+            limpiarCamposConsulta();
             jButtonConsultar.doClick();
         } else {
             JOptionPane.showMessageDialog(this, "Ningun usuario seleccionado para eliminar");
