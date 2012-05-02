@@ -365,19 +365,24 @@ public class JPanelLibros extends javax.swing.JPanel {
     private void jButtonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarActionPerformed
         //<editor-fold defaultstate="collapsed" desc="jButtonRegistarActionPerformed()">        
 
-        String lectura = jTextAreaAutores.getText();
-        String autores[] = lectura.split("\n");
+        if (!jTFId.getText().equals("")) {
+            String lectura = jTextAreaAutores.getText();
+            String autores[] = lectura.split("\n");
 
-        try {
-            controladorLibro.guardarLibro(jTFId.getText(),
-                    jTFTitulo.getText(),
-                    jTFSubTitulo.getText(),
-                    autores);
-
-        } catch (PreexistingEntityException ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
+            try {
+                controladorLibro.guardarLibro(jTFId.getText(),
+                        jTFTitulo.getText(),
+                        jTFSubTitulo.getText(),
+                        autores);
+                JOptionPane.showMessageDialog(this, "Libro Registrado Exitosamente");
+                limpiarCamposRegistro();
+            } catch (PreexistingEntityException ex) {
+                JOptionPane.showMessageDialog(this, ex.toString());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.toString());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay informacion suficiente para registrar");
         }
 
         //</editor-fold>
@@ -388,7 +393,7 @@ public class JPanelLibros extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonLimpiarRActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-        
+
         int[] selection = jTableResultados.getSelectedRows();
         if (selection.length > 0) {
             String[] idLibros = new String[selection.length];
@@ -428,7 +433,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
-        
+
         jTabbedPane1.setSelectedIndex(1);
         limpiarCamposConsulta();
         jTFCodigo1.setText(jTFId1.getText());
@@ -437,9 +442,9 @@ public class JPanelLibros extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
-        
+
         new ReportFromJTable(jTableResultados, "Consulta Libros");
-        
+
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
     private void limpiarCamposRegistro() {
@@ -466,7 +471,7 @@ public class JPanelLibros extends javax.swing.JPanel {
         TableModel myModel = new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{});
-        
+
         jTableResultados.setModel(myModel);
         jTableResultados.setRowSorter(new TableRowSorter(myModel));
         //</editor-fold>

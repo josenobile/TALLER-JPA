@@ -28,8 +28,6 @@ import dao.exceptions.PreexistingEntityException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
@@ -462,17 +460,23 @@ public class JPanelPrestamos extends javax.swing.JPanel {
 
     private void jButtonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarActionPerformed
         //<editor-fold defaultstate="collapsed" desc="jButtonRegistarActionPerformed()">        
-        try {
-            controladorPrestamo.guardarPrestamo(jTFId_prestamo.getText(),
-                    jCBid_libro.getSelectedItem().toString().split(" - ")[0],
-                    jCBid_usuario.getSelectedItem().toString().split(" - ")[0],
-                    dateChooserPrestamo.getDate(),
-                    dateChooserDevolucion.getDate());
-
-        } catch (PreexistingEntityException ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
+        if (!jTFId_prestamo.getText().equals("P-")) {
+            try {
+                controladorPrestamo.guardarPrestamo(jTFId_prestamo.getText(),
+                        jCBid_libro.getSelectedItem().toString().split(" - ")[0],
+                        jCBid_usuario.getSelectedItem().toString().split(" - ")[0],
+                        dateChooserPrestamo.getDate(),
+                        dateChooserDevolucion.getDate());
+                JOptionPane.showMessageDialog(this, "Prestamo registrado exitosamente");
+                limpiarCamposRegistro();
+                
+            } catch (PreexistingEntityException ex) {
+                JOptionPane.showMessageDialog(this, ex.toString());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.toString());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay suficiente informacion para registar el prestamo");
         }
         //</editor-fold>
     }//GEN-LAST:event_jButtonRegistarActionPerformed
