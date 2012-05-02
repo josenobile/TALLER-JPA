@@ -46,13 +46,13 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         
         dateInicial = new JDateChooser(new Date());
         dateInicial.setDateFormatString(dateFormatPattern);
-        dateInicial.setBounds(70, 130, 230, 35);
+        dateInicial.setBounds(60, 130, 240, 35);
         jPanelConsulta.add(dateInicial);
         dateInicial.setEnabled(false);
 
         dateFinal = new JDateChooser(new Date());
         dateFinal.setDateFormatString(dateFormatPattern);
-        dateFinal.setBounds(350, 130, 230, 35);
+        dateFinal.setBounds(350, 130, 240, 35);
         jPanelConsulta.add(dateFinal);
         dateFinal.setEnabled(false);
     }
@@ -277,7 +277,7 @@ public class JPanelUsuarios extends javax.swing.JPanel {
         jLCodigo2.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jLCodigo2.setText("Inicio");
         jPanelConsulta.add(jLCodigo2);
-        jLCodigo2.setBounds(20, 130, 50, 35);
+        jLCodigo2.setBounds(10, 130, 50, 35);
 
         jLCodigo4.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jLCodigo4.setText("Fin");
